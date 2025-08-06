@@ -1,5 +1,52 @@
-template-repository (1.0-1) unstable; urgency=medium
+lager (0.1.1-1) unstable; urgency=medium
 
-  * Initial release
+  * New upstream release.
+  * Update the patches:
+    - upstream_Include-cstdint-for-std-uint32_t.patch: drop, backported from
+      upstream
+    - upstream_Fix-build-of-http_debug_server-with-boost-1.80.patch: drop,
+      backported from upstream
+  * Update the build dependencies according to the upstream build system:
+    - add catch2
+  * Update copyright.
+  * Disable the tests for now: they assume Catch2 v2.x, and v3 requires changes.
+  * Drop the manual search for ncurses and SDL2 in the 'build-examples'
+    autopkgtest: the upstream CMakeLists.txt was fixed to properly search and
+    use them.
 
- -- Tsic404 <liuheng@deepin.org>  Sat, 28 Jan 2023 13:46:49 +0800
+ -- Pino Toscano <pino@debian.org>  Sun, 15 Oct 2023 21:17:09 +0200
+
+lager (0.1.0-4) unstable; urgency=medium
+
+  * Backport upstream commit ed62d99a1ed774f2b5a336684ee58e64e7c1f5c4 to support
+    boost >= 1.80; patch
+    upstream_Fix-build-of-http_debug_server-with-boost-1.80.patch.
+  * Fix typo in the short description.
+
+ -- Pino Toscano <pino@debian.org>  Sun, 08 Oct 2023 08:37:53 +0200
+
+lager (0.1.0-3) unstable; urgency=medium
+
+  * Backport upstream commit 073c03acfdaf39f24ba2cd642743320979d53b6d to add
+    a missing include in the SDL event loop; patch
+    upstream_Include-cstdint-for-std-uint32_t.patch.
+  * Add a 'build-examples' autopkgtest to build almost all the examples:
+    ncurses, SDL2, Qt5.
+  * Update copyright.
+
+ -- Pino Toscano <pino@debian.org>  Wed, 04 Oct 2023 21:03:35 +0200
+
+lager (0.1.0-2) unstable; urgency=medium
+
+  * Upload to unstable.
+  * Ship the examples in liblager-dev.
+  * Add libboost-dev, libimmer-dev, and libzug-dev as dependencies of
+    liblager-dev.
+
+ -- Pino Toscano <pino@debian.org>  Fri, 18 Aug 2023 11:28:06 +0200
+
+lager (0.1.0-1) experimental; urgency=medium
+
+  * Initial packaging.
+
+ -- Pino Toscano <pino@debian.org>  Fri, 28 Jul 2023 22:00:53 +0200
