@@ -1,0 +1,13 @@
+#!/bin/bash
+set -e
+set -x
+
+SRCDIR=$(dirname $(realpath $0))
+
+cd $AUTOPKGTEST_TMP
+cp "$SRCDIR/CMakeLists.txt" .
+ln -s /usr/share/doc/liblager-dev/examples .
+mkdir build
+cd build
+cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_VERBOSE_MAKEFILE=ON ..
+make examples
